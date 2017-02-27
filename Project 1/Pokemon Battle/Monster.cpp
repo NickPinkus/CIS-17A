@@ -1,13 +1,10 @@
 #include "Monster.h"
+#include <iostream>
+using namespace std;
 
 
 
-string Monster::GetName()
-{
-	return _name;
-}
-
-Monster::Monster()
+string Monster::SetName()
 {
 	switch (ID)
 	{
@@ -26,7 +23,22 @@ Monster::Monster()
 	case 4:
 		_name = "Eevee";
 		break;
+	default:
+		_name = "DEFAULT";
 	}
+	return _name;
+}
+
+string Monster::GetName()
+{
+	return _name;
+}
+
+Monster::Monster()
+{
+	health = 10;
+	attack = 5;
+	defense = 5;
 }
 
 

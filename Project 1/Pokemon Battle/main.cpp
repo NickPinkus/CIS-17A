@@ -1,22 +1,27 @@
 #include <iostream>
+#include <string>
 #include "Trainer.h"
 using namespace std;
+
+string nameValidate(string &setname);
 
 int main()
 {
 	int playerchoice = 0;
 	enum monster { Bulbasaur, Charmander, Squirtle, Pikachu, Eevee };
 	string nameset = "DEFAULT";
-	Trainer Opponent = Trainer("Blue");
 	
 	cout << "Oak: Hello, welcome to the world of Pokemon!" << endl
 		<< "My name is Oak! People call me a Pokemon Professor!" << endl
 		<< "What about you? What is your name?" << endl;
 
-	getline(cin, nameset);
+	nameValidate(nameset);
 	Trainer Player = Trainer(nameset);
 	cout << "\nOak: " << Player.GetName() << ", huh? That's a cool name!" << endl;
 	getchar();
+	cout << "\nOak: Ah! I see you came here with my grandson! What was his name again?" << endl;
+	nameValidate(nameset);
+	Trainer Opponent = Trainer(nameset);
 	cout << endl << Player.GetName() << "! I have three Pokemon here!" << endl
 		<< "You can choose one as your companion!\n\n";
 	getchar();
@@ -27,35 +32,51 @@ int main()
 		<< "(1) Bulbasaur - Grass Type" << endl
 		<< "(2) Charmander - Fire Type" << endl
 		<< "(3) Squirtle - Water Type" << endl;
+
 	cin >> playerchoice;
 	switch (playerchoice)
 	{
 	case 1:
-		cout << Player.GetName() << " chose Bulbasaur!" << endl;
-		Player.monster.ID = 0;
-		cout << Opponent.GetName() << " chose Charmander!" << endl;
-		Opponent.monster.ID = 1;
-
-		cout << Player.monster.GetName() << endl << Opponent.monster.GetName() << endl;
+		Player.monsterSetID(Bulbasaur);
+		Opponent.monsterSetID(Charmander);
 		break;
 	case 2:
-		cout << Player.GetName() << " chose Charmander!" << endl;
-		cout << Opponent.GetName() << " chose Squirtle!" << endl;
+		Player.monsterSetID(Charmander);
+		Opponent.monsterSetID(Squirtle);
 		break;
 	case 3:
-		cout << Player.GetName() << " chose Squirtle!" << endl;
-		cout << Opponent.GetName() << " chose Bulbasaur!" << endl;
+		Player.monsterSetID(Squirtle);
+		Opponent.monsterSetID(Bulbasaur);
 		break;
 		
 	default:
-		cout << Player.GetName() << " chose Pikachu!" << endl;
-		cout << Opponent.GetName() << " chose Eevee!" << endl;
+		Player.monsterSetID(Pikachu);
+		Opponent.monsterSetID(Eevee);
 	}
 
-
-	cout << Opponent.GetName() << " challenges " << Player.GetName() << " to a battle!" << endl;
-	cin.ignore();
+	cout << "\n\n" << Player.GetName() << " chose " << Player.monsterGetName() << "!" << endl;
+	cout << "\n\n" << Opponent.GetName() << ": Then I'll choose this one!" << endl;
+	cout << Opponent.GetName() << " chose " << Opponent.monsterGetName() << "!" << endl;
 	getchar();
 
+	cout << "\n\n" << Opponent.GetName() << ": Hey, " << Player.GetName() << "! Let's have a Pokemon battle!" << endl;
+
+	getchar();
+	cout << Opponent.GetName() << " challenges " << Player.GetName() << " to a battle!" << endl;
+	cout << Opponent.GetName() << " sends out " << Opponent.monsterGetName() << "!" << endl;
+
+	getchar();
 	return 0;
+}
+
+string nameValidate(string &setname)
+{
+	getline(cin, setname);
+	while (setname.empty())
+	{
+		cout << "Oak: I may be old, but I'm pretty sure that isn't a name..." << endl;
+		getline(cin, setname);
+	}
+
+	return setname;
 }

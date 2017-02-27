@@ -1,18 +1,18 @@
 #pragma once
-#include <string>
 #include "Monster.h"
-using namespace std;
 
 class Trainer
 {
 private:
 	string _name;
+	Monster trainerMonster;
 
 public:
 	Trainer(string _name);
 	~Trainer();
-	Monster monster;
 
+	void monsterSetID(int ID);
+	string monsterGetName();
 	string GetName();
 };
 

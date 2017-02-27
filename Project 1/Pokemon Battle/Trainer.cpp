@@ -12,6 +12,18 @@ Trainer::~Trainer()
 {
 }
 
+void Trainer::monsterSetID(int ID)
+{
+	trainerMonster.ID = ID;
+	trainerMonster.SetName();
+}
+
+string Trainer::monsterGetName()
+{
+
+	return trainerMonster.GetName();
+}
+
 string Trainer::GetName()
 {
 	return _name;

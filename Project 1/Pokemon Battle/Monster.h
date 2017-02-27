@@ -6,10 +6,12 @@ class Monster
 {
 private:
 	string _name,
-		type,
+		type;
+	int health,
 		attack,
 		defense;
 public:
+	string SetName();
 	string GetName();
 	Monster();
 	~Monster();
