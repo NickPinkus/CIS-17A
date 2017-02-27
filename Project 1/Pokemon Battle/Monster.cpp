@@ -4,27 +4,45 @@ using namespace std;
 
 
 
-string Monster::SetName()
+string Monster::SetInfo()
 {
 	switch (ID)
 	{
 	case 0:
 		_name = "Bulbasaur";
+		attack = 5;
+		defense = 5;
+		health = 5;
 		break;
 	case 1:
 		_name = "Charmander";
+		attack = 5;
+		defense = 5;
+		health = 5;
 		break;
 	case 2:
 		_name = "Squirtle";
+		attack = 5;
+		defense = 5;
+		health = 5;
 		break;
 	case 3:
 		_name = "Pikachu";
+		attack = 5;
+		defense = 5;
+		health = 5;
 		break;
 	case 4:
 		_name = "Eevee";
+		attack = 5;
+		defense = 5;
+		health = 5;
 		break;
 	default:
-		_name = "DEFAULT";
+		_name = "MISSINGNO.";
+		attack = 0;
+		defense = 0;
+		health = 0;
 	}
 	return _name;
 }

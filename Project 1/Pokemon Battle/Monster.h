@@ -11,7 +11,7 @@ private:
 		attack,
 		defense;
 public:
-	string SetName();
+	string SetInfo();
 	string GetName();
 	Monster();
 	~Monster();

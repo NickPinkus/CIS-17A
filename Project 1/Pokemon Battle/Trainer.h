@@ -5,13 +5,13 @@ class Trainer
 {
 private:
 	string _name;
-	Monster trainerMonster;
+	Monster Pokemon;
 
 public:
 	Trainer(string _name);
 	~Trainer();
 
-	void monsterSetID(int ID);
+	void monsterSetInfo(int ID);
 	string monsterGetName();
 	string GetName();
 };

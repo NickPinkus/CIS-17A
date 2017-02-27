@@ -13,13 +13,15 @@ int main()
 	
 	cout << "Oak: Hello, welcome to the world of Pokemon!" << endl
 		<< "My name is Oak! People call me a Pokemon Professor!" << endl
-		<< "What about you? What is your name?" << endl;
+		<< "What about you? What is your name?" << endl
+		<< "Name: ";
 
 	nameValidate(nameset);
 	Trainer Player = Trainer(nameset);
 	cout << "\nOak: " << Player.GetName() << ", huh? That's a cool name!" << endl;
 	getchar();
-	cout << "\nOak: Ah! I see you came here with my grandson! What was his name again?" << endl;
+	cout << "\nOak: Ah! I see you came here with my grandson! What was his name again?" << endl
+		<< "Name: ";
 	nameValidate(nameset);
 	Trainer Opponent = Trainer(nameset);
 	cout << endl << Player.GetName() << "! I have three Pokemon here!" << endl
@@ -37,21 +39,21 @@ int main()
 	switch (playerchoice)
 	{
 	case 1:
-		Player.monsterSetID(Bulbasaur);
-		Opponent.monsterSetID(Charmander);
+		Player.monsterSetInfo(Bulbasaur);
+		Opponent.monsterSetInfo(Charmander);
 		break;
 	case 2:
-		Player.monsterSetID(Charmander);
-		Opponent.monsterSetID(Squirtle);
+		Player.monsterSetInfo(Charmander);
+		Opponent.monsterSetInfo(Squirtle);
 		break;
 	case 3:
-		Player.monsterSetID(Squirtle);
-		Opponent.monsterSetID(Bulbasaur);
+		Player.monsterSetInfo(Squirtle);
+		Opponent.monsterSetInfo(Bulbasaur);
 		break;
 		
 	default:
-		Player.monsterSetID(Pikachu);
-		Opponent.monsterSetID(Eevee);
+		Player.monsterSetInfo(Pikachu);
+		Opponent.monsterSetInfo(Eevee);
 	}
 
 	cout << "\n\n" << Player.GetName() << " chose " << Player.monsterGetName() << "!" << endl;
