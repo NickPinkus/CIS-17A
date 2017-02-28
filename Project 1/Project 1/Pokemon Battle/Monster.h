@@ -9,14 +9,19 @@ private:
 	string _name,
 		type;
 	int health,
+		maxHealth,
 		attack,
-		defense;
+		defense,
+		monsterID;
 public:
-	Monster(int ID);
+	Monster();
 	~Monster();
 
-	int ID;
+	void SetIDNum(int InputID);
 
 	string GetName();
+	void SetInfo();
+	int GetHealth();
+	int GetMaxHealth();
 };
 

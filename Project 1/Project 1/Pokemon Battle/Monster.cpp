@@ -8,13 +8,13 @@ string Monster::GetName()
 	return _name;
 }
 
-Monster::Monster(int ID)
+void Monster::SetInfo()
 {
 	health = 10;
 	attack = 10;
 	defense = 5;
 
-	switch (ID)
+	switch (monsterID)
 	{
 	case 0:
 		_name = "Bulbasaur";
@@ -34,9 +34,31 @@ Monster::Monster(int ID)
 	default:
 		_name = "DEFAULT";
 	}
+
+	maxHealth = health;
+}
+
+int Monster::GetHealth()
+{
+
+	return health;
+}
+
+int Monster::GetMaxHealth()
+{
+	return maxHealth;
+}
+
+Monster::Monster()
+{
 }
 
 
 Monster::~Monster()
 {
+}
+
+void Monster::SetIDNum(int InputID)
+{
+	monsterID = InputID;
 }

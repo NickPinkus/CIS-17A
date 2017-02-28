@@ -7,32 +7,32 @@ string nameValidate();
 
 int main()
 {
-	enum monster { Bulbasaur, Charmander, Squirtle, Pikachu, Eevee };
-	int playerchoice = 0,
-		playerMonsterID = 0,
-		opponentMonsterID = 0;
-	string playerNameSet = "Player One",
-		opponentNameSet = "Player Two";
+	enum pokemon { Bulbasaur, Charmander, Squirtle, Pikachu, Eevee };
+	int playerchoice = 0;
+	string NameSet = "DEFAULT";
 	
 	cout << "Oak: Hello, welcome to the world of Pokemon!" << endl
 		<< "My name is Oak! People call me a Pokemon Professor!" << endl
-		<< "What about you? What is your name?" << endl;
+		<< "What about you? What is your name?" << endl
+		<< "Name: ";
 
-	playerNameSet = nameValidate();
+	NameSet = nameValidate();
+	Trainer Player = Trainer(NameSet);
 
-	cout << "\nOak: " << playerNameSet << ", huh? That's a cool name!" << endl;
+	cout << "\nOak: " << Player.GetName() << ", huh? That's a cool name!" << endl;
 	getchar();
-	cout << "\nOak: Ah! I see you came here with my grandson! What was his name again?" << endl;
+	cout << "\nOak: Ah! I see you came here with my grandson! What was his name again?" << endl
+		<< "Name: ";
 
-	opponentNameSet = nameValidate();
-
-	cout << endl << playerNameSet << "! I have three Pokemon here!" << endl
+	NameSet = nameValidate();
+	Trainer Opponent = Trainer(NameSet);
+	cout << endl <<"Oak: " << Player.GetName() << "! I have three Pokemon here!" << endl
 		<< "You can choose one as your companion!\n\n";
 	getchar();
-	cout << opponentNameSet << ": Gramps, what about me?" << endl;
+	cout << Opponent.GetName() << ": Gramps, what about me?" << endl;
 	getchar();
-	cout << "\nOak: " << opponentNameSet << "! I forgot you were coming! You can pick one too!\n\n" <<
-		playerNameSet << ", choose a Pokemon:" << endl
+	cout << "\nOak: " << Opponent.GetName() << "! I forgot you were coming! You can pick one too!\n\n" <<
+		Player.GetName() << ", choose a Pokemon:" << endl
 		<< "(1) Bulbasaur - Grass Type" << endl
 		<< "(2) Charmander - Fire Type" << endl
 		<< "(3) Squirtle - Water Type" << endl;
@@ -41,25 +41,25 @@ int main()
 	switch (playerchoice)
 	{
 	case 1:
-		playerMonsterID = Bulbasaur;
-		opponentMonsterID = Charmander;
+		Player.Pokemon.SetIDNum(Bulbasaur);
+		Opponent.Pokemon.SetIDNum(Charmander);
 		break;
 	case 2:
-		playerMonsterID = Charmander;
-		opponentMonsterID = Squirtle;
+		Player.Pokemon.SetIDNum(Charmander);
+		Opponent.Pokemon.SetIDNum(Squirtle);
 		break;
 	case 3:
-		playerMonsterID = Squirtle;
-		opponentMonsterID = Bulbasaur;
+		Player.Pokemon.SetIDNum(Squirtle);
+		Opponent.Pokemon.SetIDNum(Bulbasaur);
 		break;
 		
 	default:
-		playerMonsterID = Pikachu;
-		opponentMonsterID = Eevee;
+		Player.Pokemon.SetIDNum(Pikachu);
+		Opponent.Pokemon.SetIDNum(Eevee);
 	}
 
-	Trainer Player = Trainer(playerNameSet, playerMonsterID);
-	Trainer Opponent = Trainer(opponentNameSet, opponentMonsterID);
+	Player.Pokemon.SetInfo();
+	Opponent.Pokemon.SetInfo();
 
 
 	cout << "\n\n" << Player.GetName() << " chose " << Player.Pokemon.GetName() << "!" << endl;
@@ -70,8 +70,21 @@ int main()
 	cout << "\n\n" << Opponent.GetName() << ": Hey, " << Player.GetName() << "! Let's have a Pokemon battle!" << endl;
 
 	getchar();
-	cout << Opponent.GetName() << " challenges " << Player.GetName() << " to a battle!\n\n";
+
+	cout << Opponent.GetName() << " challenges " << Player.GetName() << " to a battle!" << endl;
 	cout << Opponent.GetName() << " sends out " << Opponent.Pokemon.GetName() << "!" << endl;
+
+	getchar();
+
+	cout << "Go! " << Player.Pokemon.GetName() << "!" << endl;
+	
+	getchar();
+
+	cout << Opponent.Pokemon.GetName() << endl
+		<< "Health: " << Opponent.Pokemon.GetHealth() << "/" << Opponent.Pokemon.GetMaxHealth() << "\n\n";
+
+	cout << Player.Pokemon.GetName() << endl
+		<< "Health: " << Player.Pokemon.GetHealth() << "/" << Player.Pokemon.GetMaxHealth() << "\n\n";
 
 	getchar();
 	return 0;

@@ -3,10 +3,9 @@
 using namespace std;
 
 
-Trainer::Trainer(string name, int monsterID)
+Trainer::Trainer(string name)
 {
 	_name = name;
-	Pokemon.ID = monsterID;
 }
 
 

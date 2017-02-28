@@ -8,12 +8,11 @@ private:
 	string _name;
 
 public:
-	Trainer(string _name, int monsterID);
+	Trainer(string _name);
 	~Trainer();
 
-	int monsterID;
 
-	Monster Pokemon = Monster(monsterID);
+	Monster Pokemon = Monster();
 
 	string GetName();
 
