@@ -1,5 +1,6 @@
 #pragma once
 #include "Attacks.h"
+#include <iostream>
 
 
 
@@ -16,15 +17,16 @@ int Attacks::calculateAttackDamage()
 {
 	srand(time(NULL));
 
-	switch (rand() % 20 + 1)
+	switch (rand() % 5 + 1)
 	{
 	case 1:
+		cout << "\n\nBut the attack missed...\n\n";
 		return 0;
-		break;
-	case 20:
+	case 5:
+		cout << "\n\nCritical hit!\n\n";
 		return attack * 2;
-		break;
 	default:
+		cout << "\n\nThe attack hit!\n\n";
 		return attack;
 	}
 }
