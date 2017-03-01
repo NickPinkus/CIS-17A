@@ -1,6 +1,4 @@
 #include "Monster.h"
-#include <iostream>
-using namespace std;
 
 
 string Monster::GetName()
@@ -10,38 +8,47 @@ string Monster::GetName()
 
 void Monster::SetInfo()
 {
-	health = 10;
-	attack = 10;
-	defense = 5;
-
-	switch (monsterID)
+	if (monsterID == 0)
 	{
-	case 0:
 		_name = "Bulbasaur";
-		break;
-	case 1:
+		Health = 12;
+		Attack1 = Attacks("Tackle", 3);
+		Attack2 = Attacks("Vine Whip", 5);
+	}
+	else if (monsterID == 1)
+	{
 		_name = "Charmander";
-		break;
-	case 2:
+		Health = 8;
+		Attack1 = Attacks("Scratch", 5);
+		Attack2 = Attacks("Ember", 7);
+	}
+	else if (monsterID == 2)
+	{
 		_name = "Squirtle";
-		break;
-	case 3:
+		Health = 10;
+		Attack1 = Attacks("Tackle", 3);
+		Attack2 = Attacks("Bubble", 5);
+	}
+	else if (monsterID == 3)
+	{
 		_name = "Pikachu";
-		break;
-	case 4:
+		Health = 8;
+		Attack1 = Attacks("Scratch", 5);
+		Attack2 = Attacks("Thundershock", 7);
+	}
+	else if (monsterID == 4)
+	{
 		_name = "Eevee";
-		break;
-	default:
+		Health = 12;
+		Attack1 = Attacks("Tackle", 3);
+		Attack2 = Attacks("Quick Attack", 5);
+	}
+	else
+	{
 		_name = "DEFAULT";
 	}
 
-	maxHealth = health;
-}
-
-int Monster::GetHealth()
-{
-
-	return health;
+	maxHealth = Health;
 }
 
 int Monster::GetMaxHealth()

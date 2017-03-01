@@ -3,9 +3,8 @@
 using namespace std;
 
 
-Trainer::Trainer(string name)
+Trainer::Trainer(string name) : _name(name)
 {
-	_name = name;
 }
 
 
